@@ -4,13 +4,11 @@ import ReactJson from '@microlink/react-json-view'
 import { isValidJSON } from '../../Functions/JsonBased'
 import SettingsPannel from '../../Components/ViewBased/SettingsPannel'
 
-const JSONViewer = ({ jsonStringData }) => {
+const JSONViewer = ({ modJSON, setModJSON }) => {
 
   const [displayDataTypes, setDisplayDataTypes] = React.useState(true)
   const [displayObjectSize, setDisplayObjectSize] = React.useState(true)
   const [enableEditing, setEnableEditing] = React.useState(false)
-
-  const [modJSON, setModJSON] = React.useState(JSON.parse(jsonStringData))
 
 
   return (
@@ -24,14 +22,14 @@ const JSONViewer = ({ jsonStringData }) => {
       />
 
       
-      { isValidJSON(jsonStringData) &&
+      { isValidJSON(modJSON) &&
         <ReactJson
           style={{ zoom: '1.5' }}
-          src={modJSON} indentWidth={7} collapsed={1}
+          src={JSON.parse(modJSON)} indentWidth={7} collapsed={1}
           displayDataTypes={displayDataTypes} displayObjectSize={displayObjectSize}
-          onEdit={enableEditing ? e => setModJSON(e.updated_src) : false}
-          onAdd={enableEditing ? e => setModJSON(e.updated_src) : false}
-          onDelete={enableEditing ? e => setModJSON(e.updated_src) : false}
+          onEdit={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
+          onAdd={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
+          onDelete={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
         />
       }
 
