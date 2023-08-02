@@ -1,7 +1,9 @@
+import json5 from "json5";
+
 // Check if a string is a valid JSON
 function isValidJSON(stringData) {
     try {
-        JSON.parse(stringData);
+        json5.parse(stringData);
     } catch (e) {
         return false;
     }
@@ -12,7 +14,7 @@ function isValidJSON(stringData) {
 // Minify a JSON object
 function minifyJSON(jsonData) {
     if (isValidJSON(jsonData)) {
-        return JSON.stringify(JSON.parse(jsonData))
+        return JSON.stringify(json5.parse(jsonData))
     } else {
         alert('Cats! The JSON is not valid!')
     }
@@ -22,7 +24,7 @@ function minifyJSON(jsonData) {
 // Beautify a JSON object
 function beautifyJSON(jsonData) {
     if (isValidJSON(jsonData)) {
-        return JSON.stringify(JSON.parse(jsonData), null, 2)
+        return JSON.stringify(json5.parse(jsonData), null, 2)
     } else {
         alert('Cats! The JSON is not valid!')
     }

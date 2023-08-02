@@ -3,6 +3,7 @@ import React from 'react'
 import ReactJson from '@microlink/react-json-view'
 import { isValidJSON } from '../../Functions/JsonBased'
 import SettingsPannel from '../../Components/ViewBased/SettingsPannel'
+import json5 from 'json5'
 
 const JSONViewer = ({ modJSON, setModJSON }) => {
 
@@ -25,7 +26,7 @@ const JSONViewer = ({ modJSON, setModJSON }) => {
       { isValidJSON(modJSON) &&
         <ReactJson
           style={{ zoom: '1.5' }}
-          src={JSON.parse(modJSON)} indentWidth={7} collapsed={1}
+          src={json5.parse(modJSON)} indentWidth={7} collapsed={1}
           displayDataTypes={displayDataTypes} displayObjectSize={displayObjectSize}
           onEdit={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
           onAdd={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}

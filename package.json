@@ -8,6 +8,7 @@
     "@microlink/react-json-view": "^1.22.2",
     "@mui/material": "^5.14.3",
     "@vercel/analytics": "^1.0.1",
+    "json5": "^2.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
