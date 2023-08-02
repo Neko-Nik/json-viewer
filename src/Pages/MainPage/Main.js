@@ -29,7 +29,7 @@ const Main = () => {
       </Tabs>
 
       { value === 'Visual' &&
-        <JSONViewer />
+        <JSONViewer jsonStringData={jsonData} />
       }
 
       { value === 'Text' &&
