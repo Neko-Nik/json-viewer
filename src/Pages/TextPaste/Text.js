@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import TextSettingsPannel from '../../Components/TextBased/TextSettingsPannel'
 import InputTextArea from '../../Components/TextBased/InputTextArea'
 
