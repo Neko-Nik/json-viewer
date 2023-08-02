@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './Pages/Viewer/Main';
+import Main from './Pages/MainPage/Main';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

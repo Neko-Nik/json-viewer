@@ -2,7 +2,10 @@ import React from 'react'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <div>
+      Curently Under Construction<br />
+      <a href="https://www.nekonik.com">NekoNik.com</a>
+    </div>
   )
 }
 
