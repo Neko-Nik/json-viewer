@@ -2,7 +2,8 @@ import React from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import JSONViewer from '../Viewer/JSONViewer';
 import Text from '../TextPaste/Text';
-import About from '../About/About';
+import { isValidJSON } from '../../Functions/JsonBased';
+
 
 const Main = () => {
 
@@ -10,7 +11,17 @@ const Main = () => {
   const [value, setValue] = React.useState('Text')
 
   const handleChange = (event, newValue) => {
-    setValue(newValue)
+    if (newValue === 'About') {
+      window.open('https://www.nekonik.com/about', '_blank')
+    } else if (newValue === 'Visual') {
+      if (isValidJSON(jsonData)) {
+        setValue(newValue)
+      } else {
+        alert('Cats! The JSON is not valid!')
+      }
+    } else {
+      setValue(newValue)
+    }
   };
 
 
@@ -35,11 +46,6 @@ const Main = () => {
       { value === 'Text' &&
         <Text jsonData={jsonData} setJsonData={setJsonData} />
       }
-
-      { value === 'About' &&
-        <About />
-      }
-
 
     </Box>
   )
