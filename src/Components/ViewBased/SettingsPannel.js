@@ -17,7 +17,8 @@ const SettingsPannel = ({ displayDataTypes, setDisplayDataTypes,
       return (
         <Button
           onClick={handleClick}
-          variant={state ? 'contained' : 'outlined'}
+          variant='outlined'
+          color={state ? 'success' : 'error'}
         >
           {text}
         </Button>
@@ -42,7 +43,7 @@ const SettingsPannel = ({ displayDataTypes, setDisplayDataTypes,
                 <ModButton text='Data Types' state={displayDataTypes} setState={setDisplayDataTypes} />
                 <ModButton text='Object Size' state={displayObjectSize} setState={setDisplayObjectSize} />
                 <ModButton text='Edit' state={enableEditing} setState={setEnableEditing} />
-                <Button text='Download' onClick={handleDownload} variant='contained' color='secondary'>Download</Button>
+                <Button text='Download' onClick={handleDownload} variant='outlined' color='secondary'>Download</Button>
             </ButtonGroup>
         </Box>
     )
