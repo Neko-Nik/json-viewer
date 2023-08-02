@@ -7,7 +7,7 @@ import json5 from 'json5'
 
 const JSONViewer = ({ modJSON, setModJSON }) => {
 
-  const [displayDataTypes, setDisplayDataTypes] = React.useState(true)
+  const [displayDataTypes, setDisplayDataTypes] = React.useState(false)
   const [displayObjectSize, setDisplayObjectSize] = React.useState(true)
   const [enableEditing, setEnableEditing] = React.useState(false)
 
