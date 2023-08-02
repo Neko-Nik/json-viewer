@@ -1,8 +1,19 @@
-import React from 'react'
+import { Box } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import TextSettingsPannel from '../../Components/TextBased/TextSettingsPannel'
+import InputTextArea from '../../Components/TextBased/InputTextArea'
 
-const Text = () => {
+const Text = ({ jsonData, setJsonData }) => {
+  
+  
   return (
-    <div>Text</div>
+    <Box sx={{ width: '100%' }}>
+      
+      <TextSettingsPannel jsonData={jsonData} setJsonData={setJsonData} />
+
+      <InputTextArea jsonData={jsonData} setJsonData={setJsonData} />
+    
+    </Box>
   )
 }
 
