@@ -25,7 +25,8 @@ const JSONViewer = ({ jsonStringData }) => {
 
       
       { isValidJSON(jsonStringData) &&
-        <ReactJson 
+        <ReactJson
+          style={{ zoom: '1.5' }}
           src={JSON.parse(jsonStringData)} indentWidth={7} collapsed={1}
           displayDataTypes={displayDataTypes} displayObjectSize={displayObjectSize}
           onEdit={enableEditing ? e => setModJSON(e.updated_src) : false}

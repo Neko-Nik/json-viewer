@@ -20,7 +20,7 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
 
 
     return (
-        <Box sx={{ width: '100%', height: '100%'}}>
+        <Box sx={{ width: '100%', height: '100%', pb: 1 }}>
             <ButtonGroup variant="outlined" aria-label="outlined primary button group" size='secondary'>
                 <Button onClick={handleMinifyJSON}>Minify</Button>
                 <Button onClick={handleBeautifyJSON}>Beautify</Button>

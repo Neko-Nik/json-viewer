@@ -6,7 +6,7 @@ const InputTextArea = ({ jsonData , setJsonData }) => {
   useEffect(() => {
     // Function to adjust textarea height
     const adjustTextareaHeight = () => {
-      const navbarHeight = 116;
+      const navbarHeight = 131;
       const availableHeight = window.innerHeight - navbarHeight;
       textareaRef.current.style.height = `${availableHeight}px`;
     };

@@ -33,6 +33,7 @@ const Main = () => {
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="secondary tabs example"
+        sx={{ pb: 1 }}
       >
         <Tab value="Visual" label="Visual" />
         <Tab value="Text" label="Text" />

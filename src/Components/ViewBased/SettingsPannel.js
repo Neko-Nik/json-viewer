@@ -37,7 +37,7 @@ const SettingsPannel = ({ displayDataTypes, setDisplayDataTypes,
 
 
     return (
-        <Box sx={{ width: '100%', height: '100%'}}>
+        <Box sx={{ width: '100%', height: '100%', pb: 2 }}>
             <ButtonGroup variant="outlined" aria-label="outlined primary button group" size='secondary'>
                 <ModButton text='Data Types' state={displayDataTypes} setState={setDisplayDataTypes} />
                 <ModButton text='Object Size' state={displayObjectSize} setState={setDisplayObjectSize} />
