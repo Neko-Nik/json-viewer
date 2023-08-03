@@ -1,4 +1,5 @@
 import { Box, Button, ButtonGroup } from '@mui/material'
+import json5 from 'json5'
 import React from 'react'
 
 
@@ -28,12 +29,13 @@ const SettingsPannel = ({ displayDataTypes, setDisplayDataTypes,
 
 
     const handleDownload = () => {
-      const element = document.createElement("a");
-      const file = new Blob([JSON.stringify(modJSON, null, 2)], {type: 'text/plain'});
-      element.href = URL.createObjectURL(file);
-      element.download = "Neko_Nik-JSON_Editor.json";
-      document.body.appendChild(element); // Required for this to work in FireFox
-      element.click();
+      // Download the modified JSON file as a .json file prompt user to save
+      const element = document.createElement('a')
+      const file = new Blob([JSON.stringify(json5.parse(modJSON), null, 2)], {type: 'text/plain'})
+      element.href = URL.createObjectURL(file)
+      element.download = 'NekoNik-modifiedJSON.json'
+      document.body.appendChild(element)
+      element.click()
     }
 
 
