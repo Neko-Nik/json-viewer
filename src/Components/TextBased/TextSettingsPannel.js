@@ -2,6 +2,7 @@ import { Box, Button, ButtonGroup } from '@mui/material'
 import React from 'react'
 
 import {minifyJSON , beautifyJSON , clearData} from '../../Functions/JsonBased'
+import { postJsonData } from '../../Functions/ApiService'
 
 
 const TextSettingsPannel = ({ jsonData , setJsonData }) => {
@@ -33,6 +34,17 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
         input.click();
     }
 
+    const handleShareJSON = async () => {
+        try {
+            // Try to parse the JSON to ensure it's valid
+            const parsedData = JSON.parse(jsonData);
+            const result = await postJsonData(parsedData);
+            // You can implement your own UI to show the key to the user
+            alert(`Your JSON has been shared!\nKey: ${result.key}\nExpires at: ${result.expiresAt}`);
+        } catch (error) {
+            alert('Error sharing JSON: ' + (error.message || 'Invalid JSON'));
+        }
+    }
 
     return (
         <Box sx={{ width: '100%', height: '100%', pb: 1 }}>
@@ -41,6 +53,7 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                 <Button onClick={handleBeautifyJSON}>Beautify</Button>
                 <Button onClick={handleLoadJSONFile}>Load</Button>
                 <Button onClick={handleClearData}>Clear</Button>
+                <Button onClick={handleShareJSON}>Share</Button>
             </ButtonGroup>
         </Box>
     )

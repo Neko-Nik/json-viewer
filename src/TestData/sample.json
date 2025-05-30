@@ -1,0 +1,43 @@
+{
+  "person": {
+    "name": "John Doe",
+    "age": 30,
+    "email": "john@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "Boston",
+      "state": "MA",
+      "zipCode": "02108"
+    }
+  },
+  "orders": [
+    {
+      "id": "ORD-001",
+      "items": [
+        {
+          "productId": "P1",
+          "name": "Laptop",
+          "price": 999.99,
+          "quantity": 1
+        },
+        {
+          "productId": "P2",
+          "name": "Mouse",
+          "price": 24.99,
+          "quantity": 2
+        }
+      ],
+      "total": 1049.97,
+      "status": "shipped"
+    }
+  ],
+  "preferences": {
+    "theme": "dark",
+    "notifications": true,
+    "language": "en-US"
+  },
+  "metadata": {
+    "lastUpdated": "2025-05-30T10:00:00Z",
+    "version": "1.0.0"
+  }
+}
