@@ -1,10 +1,20 @@
-import { Box, Button, ButtonGroup } from '@mui/material'
-import React from 'react'
+import { Box, Button, ButtonGroup, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import React, { useState } from 'react'
+import ShareIcon from '@mui/icons-material/Share'
 
 import {minifyJSON , beautifyJSON , clearData} from '../../Functions/JsonBased'
+import { postJsonData } from '../../Functions/ApiService'
 
 
 const TextSettingsPannel = ({ jsonData , setJsonData }) => {
+    const [shareDialog, setShareDialog] = useState(false);
+    const [shareResult, setShareResult] = useState(null);
+    const [shareError, setShareError] = useState(null);
+
+    const handleDialogClose = () => {
+        setShareDialog(false);
+        setShareError(null);
+    };
 
     const handleMinifyJSON = () => {
         setJsonData(minifyJSON(jsonData))
@@ -33,6 +43,17 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
         input.click();
     }
 
+    const handleShareJSON = async () => {
+        try {
+            const parsedData = JSON.parse(jsonData);
+            const result = await postJsonData(parsedData);
+            setShareResult(result);
+            setShareDialog(true);
+        } catch (error) {
+            setShareError(error.message || 'Invalid JSON');
+            setShareDialog(true);
+        }
+    }
 
     return (
         <Box sx={{ width: '100%', height: '100%', pb: 1 }}>
@@ -41,7 +62,34 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                 <Button onClick={handleBeautifyJSON}>Beautify</Button>
                 <Button onClick={handleLoadJSONFile}>Load</Button>
                 <Button onClick={handleClearData}>Clear</Button>
+                <Button onClick={handleShareJSON} startIcon={<ShareIcon />}>Share</Button>
             </ButtonGroup>
+
+            <Dialog
+                open={shareDialog}
+                onClose={handleDialogClose}
+                aria-labelledby="share-dialog-title"
+            >
+                <DialogTitle id="share-dialog-title">
+                    {shareError ? 'Error Sharing JSON' : 'JSON Shared Successfully'}
+                </DialogTitle>
+                <DialogContent>
+                    {shareError ? (
+                        <DialogContentText color="error">
+                            {shareError}
+                        </DialogContentText>
+                    ) : (
+                        <DialogContentText>
+                            Your JSON has been shared!<br />
+                            Key: {shareResult?.key}<br />
+                            Expires at: {shareResult?.expiresAt}
+                        </DialogContentText>
+                    )}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleDialogClose}>Close</Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     )
 }
