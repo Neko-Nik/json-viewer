@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-/**
- * Sends JSON data to the API and returns a key with expiration time
- * @param {Object} jsonData - The JSON data to send
- * @returns {Promise<{key: string, expiresAt: string}>}
- */
+const BASE_URL = 'https://jsonviewer.nekonik.com/share';
+const API_KEY = 'API_KEY';
+
+
 export const postJsonData = async (jsonData) => {
   try {
-    const response = await axios.post('https://api.your-service.com/share', jsonData, {
+    const response = await axios.post(BASE_URL, jsonData, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'API-Key': API_KEY
       }
     });
 
@@ -23,17 +23,20 @@ export const postJsonData = async (jsonData) => {
   }
 };
 
-/**
- * Example usage:
- * 
- * try {
- *   const result = await postJsonData({
- *     name: "John Doe",
- *     age: 30
- *   });
- *   console.log('Received key:', result.key);
- *   console.log('Expires at:', result.expiresAt);
- * } catch (error) {
- *   // Handle error
- * }
- */
+
+export const getSharedJson = async (uuid) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${uuid}`, {
+      headers: {
+        'API-Key': API_KEY
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching shared JSON:', error);
+    throw error;
+  }
+};
+
+
