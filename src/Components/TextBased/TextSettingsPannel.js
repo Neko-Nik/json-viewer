@@ -19,8 +19,9 @@ const TextSettingsPanel = ({ jsonData, setJsonData }) => {
     const shareId = urlParams.get('share');
 
     if (shareId) {
+      setJsonData('Loading . . .');
       getSharedJson(shareId)
-        .then(data => setJsonData(JSON.stringify(data, null, 2)))
+        .then(data => setJsonData(JSON.stringify(data.data.content, null, 2)))
         .catch(() => setJsonData('{"error": "Failed to fetch shared JSON data."}'));
     }
   }, [setJsonData]);
