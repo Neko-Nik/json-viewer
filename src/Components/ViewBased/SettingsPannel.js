@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup } from '@mui/material'
 import ShareIcon from '@mui/icons-material/Share';
 import json5 from 'json5'
 import { useState } from 'react';
-import ShareDialog from '../TextBased/ShareDialog';
+import ShareDialog from '../ShareDialog';
 import { postJsonData } from '../../Functions/ApiService';
 
 

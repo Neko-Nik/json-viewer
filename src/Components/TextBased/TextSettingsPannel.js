@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import { Box, Button, ButtonGroup } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
+import { useState, useEffect } from 'react';
 
 import { minifyJSON, beautifyJSON, clearData } from '../../Functions/JsonBased';
 import { postJsonData, getSharedJson } from '../../Functions/ApiService';
-import ShareDialog from './ShareDialog';
+import ShareDialog from '../ShareDialog';
 
 
 
