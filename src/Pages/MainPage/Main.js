@@ -6,9 +6,12 @@ import { isValidJSON } from '../../Functions/JsonBased';
 
 
 const Main = () => {
-
   const [jsonData, setJsonData] = React.useState('')
-  const [value, setValue] = React.useState('Text')
+  const [value, setValue] = React.useState('Text');
+
+  const TextComponent = React.useMemo(() => (
+    <Text jsonData={jsonData} setJsonData={setJsonData} />
+  ), [jsonData, setJsonData]);
 
   const handleChange = (event, newValue) => {
     if (newValue === 'About') {
@@ -44,10 +47,7 @@ const Main = () => {
         <JSONViewer modJSON={jsonData} setModJSON={setJsonData} />
       }
 
-      { value === 'Text' &&
-        <Text jsonData={jsonData} setJsonData={setJsonData} />
-      }
-
+      { value === 'Text' && TextComponent }
     </Box>
   )
 }
