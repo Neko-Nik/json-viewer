@@ -25,10 +25,9 @@ const JSONViewer = ({ modJSON, setModJSON }) => {
         modJSON={modJSON}
       />
 
-      
       { isValidJSON(modJSON) &&
         <ReactJson
-          style={{ zoom: '1.5' }} quotesOnKeys={false} validationMessage={"Cats! Error in JSON!"}
+          style={{ zoom: '1.23' }} quotesOnKeys={false} validationMessage={"Cats! Error in JSON!"}
           src={json5.parse(modJSON)} indentWidth={7} collapsed={1} name={false}
           displayDataTypes={displayDataTypes} displayObjectSize={displayObjectSize}
           onEdit={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
@@ -37,7 +36,6 @@ const JSONViewer = ({ modJSON, setModJSON }) => {
           theme={isDark ? 'colors' : 'rjv-default'}
         />
       }
-
     </Box>
   )
 }
