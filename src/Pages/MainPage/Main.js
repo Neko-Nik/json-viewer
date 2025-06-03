@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Box, Tab, Tabs, IconButton,
-  ThemeProvider, createTheme, CssBaseline
+  ThemeProvider, createTheme, CssBaseline,
+  Typography
 } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 
@@ -57,10 +58,13 @@ const Main = () => {
             <Tab value="Visual" label="Visual" />
             <Tab value="Text" label="Text" />
             <Tab value="About" label="About" />
+            <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
+              {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                {mode === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </Typography>
+            </IconButton>
           </Tabs>
-          <IconButton onClick={toggleTheme} color="inherit">
-            {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-          </IconButton>
         </Box>
 
         {value === 'Visual' && <JSONViewer modJSON={jsonData} setModJSON={setJsonData} />}
