@@ -34,7 +34,7 @@ const JSONViewer = ({ modJSON, setModJSON }) => {
           onEdit={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
           onAdd={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
           onDelete={enableEditing ? e => setModJSON(JSON.stringify(e.updated_src)) : false}
-          theme={isDark ? 'monokai' : 'rjv-default'}
+          theme={isDark ? 'colors' : 'rjv-default'}
         />
       }
 
