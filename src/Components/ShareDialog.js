@@ -71,16 +71,16 @@ const ShareDialog = ({ open, onClose, shareResult, shareError }) => {
                   p: 1.5,
                   border: '1px solid #ccc',
                   borderRadius: 2,
-                  bgcolor: '#f9f9f9',
+                  bgcolor: '#333', //Dark Mode
                   position: 'relative',
                   cursor: 'pointer',
                   '&:hover': {
-                    backgroundColor: '#f0f0f0',
+                    backgroundColor: '#444', //Dark mode
                   },
                   mb: 2,
                 }}
               >
-                <Typography variant="body2" sx={{ wordBreak: 'break-all' }}>
+                <Typography variant="body2" sx={{ wordBreak: 'break-all', color: '#fff' }}> 
                     {shareUrl}
                 </Typography>
               </Box>
