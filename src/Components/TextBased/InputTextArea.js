@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 const InputTextArea = ({ jsonData , setJsonData }) => {
   const textareaRef = useRef(null);
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
 
   useEffect(() => {
     // Function to adjust textarea height
@@ -26,8 +29,8 @@ const InputTextArea = ({ jsonData , setJsonData }) => {
       ref={textareaRef}
       style={{
         width: '100%',
-        backgroundColor: '#f7f7f7',
-        color: 'black',
+        backgroundColor: isDark ? '#303030' : '#f7f7f7',
+        color: isDark ? 'white' : 'black',
         fontSize: '20px',
         fontFamily: 'monospace',
         resize: 'none',
